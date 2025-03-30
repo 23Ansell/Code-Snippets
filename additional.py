@@ -19,3 +19,6 @@ def get_db_connection():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+
+today_date=(date.today() + timedelta(days=1)).isoformat()
+# put this with the is_logged_in part in the functions

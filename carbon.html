@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <title>Carbon Calculator</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Carbon Calculator</h2>
+        
+        <!-- Form for Carbon Calculation -->
+        <form method="POST" action="/calculate">
+            <div class="mb-3">
+                <label for="vehicle_type" class="form-label">Vehicle Type</label>
+                <select class="form-select" name="vehicle_type" id="vehicle_type" required>
+                    <option value="petrol">Petrol Car</option>
+                    <option value="diesel">Diesel Car</option>
+                    <option value="electric">Electric Car</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="distance" class="form-label">Distance (km)</label>
+                <input type="number" class="form-control" name="distance" id="distance" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        <!-- Display Result if Available -->
+        {% if result %}
+        <div class="mt-4 alert alert-info">
+            <h5>Carbon Emissions: {{ result }} kg CO₂</h5>
+        </div>
+        {% endif %}
+
+        <!-- Display Error if Occurred -->
+        {% if error %}
+        <div class="mt-4 alert alert-danger">
+            <h5>Error: {{ error }}</h5>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
